@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Private PDF toolkit: merge, split, rotate, compress in your browser</title>
+<meta name="description" content="Merge, split, reorder, rotate and compress PDFs in your browser. Your files never leave your device: no upload, no signup. Free and open source.">
+<meta name="theme-color" content="#0B0F0C">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/MartianMono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="app.css?v=1">
+</head>
+<body>
+
+<nav class="strip" aria-label="Site">
+  <div class="in">
+    <a class="home" id="lnkHome" href="/tools/pdf-toolkit/" data-t="back">← hmsk.life</a>
+    <span class="sp"></span>
+    <button type="button" class="lang" id="langBtn" data-t="langSwitch">DE</button>
+    <a id="lnkImprint" href="/imprint/" data-t="imprint">Imprint</a>
+    <a id="lnkPrivacy" href="/privacy/" data-t="privacy">Privacy</a>
+  </div>
+</nav>
+
+<header class="head wrap">
+  <p class="cmd"><span class="ps">$</span> pdf-toolkit --offline --no-upload</p>
+  <h1 data-t="h1">Merge, split and compress PDFs without uploading them</h1>
+  <p class="sub" data-t="sub"></p>
+</header>
+
+<main class="wrap">
+  <input type="file" id="fileInput" accept="application/pdf,.pdf" multiple hidden>
+
+  <section class="drop" id="drop" aria-labelledby="dropTitle">
+    <svg class="drop__icon" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5zM8.5 7v2.5H11v1H8.5V13h-1v-2.5H5v-1h2.5V7z"/></svg>
+    <p class="drop__t" id="dropTitle" data-t="dropTitle">Drop PDF files here</p>
+    <p class="drop__or"><span data-t="dropOr">or</span></p>
+    <button type="button" class="btn btn--amber" id="chooseBtn" data-t="choose">Choose PDFs</button>
+    <p class="hint" data-t="dropHint"></p>
+  </section>
+
+  <div class="msgs" id="msgs" aria-live="polite"></div>
+
+  <div class="work" id="work" hidden>
+    <section class="pages" aria-labelledby="statusLine">
+      <div class="files" id="files" aria-label="Files"></div>
+      <div class="toolbar" role="toolbar" aria-controls="grid">
+        <button type="button" class="btn btn--ghost sm" id="addBtn" data-t="addMore">+ Add PDFs</button>
+        <button type="button" class="btn btn--ghost sm" id="selBtn" data-t="selectAll">Select all</button>
+        <button type="button" class="btn btn--ghost sm" id="rotLBtn" data-t="rotL">⟲</button>
+        <button type="button" class="btn btn--ghost sm" id="rotRBtn" data-t="rotR">⟳</button>
+        <button type="button" class="btn btn--ghost sm" id="delBtn" data-t="del">Delete</button>
+        <button type="button" class="btn btn--ghost sm" id="undoBtn" data-t="undo" disabled>Undo</button>
+        <span class="sp"></span>
+        <button type="button" class="btn btn--ghost sm" id="clearBtn" data-t="clear">Start over</button>
+      </div>
+      <p class="status" id="statusLine"></p>
+      <ol class="grid" id="grid" aria-describedby="gridHint"></ol>
+      <p class="hint" id="gridHint" data-t="gridHint"></p>
+    </section>
+
+    <aside class="panel" aria-label="Output">
+      <div class="term">
+        <div class="term__bar" role="tablist" id="tabs">
+          <i></i><i></i><i></i>
+          <button type="button" role="tab" id="tab-merge" aria-controls="p-merge" data-tab="merge"><span class="ps">$</span> <span data-t="tabMerge">merge</span></button>
+          <button type="button" role="tab" id="tab-split" aria-controls="p-split" data-tab="split"><span data-t="tabSplit">split</span></button>
+          <button type="button" role="tab" id="tab-compress" aria-controls="p-compress" data-tab="compress"><span data-t="tabCompress">compress</span></button>
+        </div>
+        <div class="term__body">
+
+          <div role="tabpanel" id="p-merge" aria-labelledby="tab-merge">
+            <p class="help" data-t="mergeHelp"></p>
+            <label for="nameMerge" data-t="fileName">File name</label>
+            <div class="fname"><input id="nameMerge" type="text" autocomplete="off" spellcheck="false"><span>.pdf</span></div>
+            <button type="button" class="btn btn--amber wide" id="mergeBtn" data-t="download">Download PDF</button>
+            <p class="hint" data-t="mergeNote"></p>
+          </div>
+
+          <div role="tabpanel" id="p-split" aria-labelledby="tab-split" hidden>
+            <p class="help" data-t="splitHelp"></p>
+            <div class="radios" role="radiogroup">
+              <label class="rad"><input type="radio" name="split" value="every"> <span data-t="splitEvery"></span></label>
+              <label class="rad"><input type="radio" name="split" value="n"> <span data-t="splitN">Every</span>
+                <input type="number" id="splitN" class="num" min="1" max="999" step="1" value="2" inputmode="numeric" aria-label="n">
+                <span data-t="splitNAfter"></span></label>
+              <label class="rad"><input type="radio" name="split" value="ranges"> <span data-t="splitRanges"></span></label>
+              <div class="ranges">
+                <input type="text" id="ranges" autocomplete="off" spellcheck="false" data-tp="rangesPh" aria-describedby="rangesHint">
+                <p class="hint" id="rangesHint" data-t="rangesHint"></p>
+              </div>
+              <label class="rad"><input type="radio" name="split" value="sel"> <span data-t="splitSel"></span></label>
+            </div>
+            <p class="preview" id="splitPreview" aria-live="polite"></p>
+            <button type="button" class="btn btn--amber wide" id="splitBtn" data-t="splitBtn">Split and download</button>
+          </div>
+
+          <div role="tabpanel" id="p-compress" aria-labelledby="tab-compress" hidden>
+            <p class="help" data-t="compressHelp"></p>
+            <fieldset>
+              <legend data-t="level">Level</legend>
+              <label class="rad"><input type="radio" name="level" value="light"> <span data-t="lvlLight"></span></label>
+              <label class="rad"><input type="radio" name="level" value="medium"> <span data-t="lvlMedium"></span></label>
+              <label class="rad"><input type="radio" name="level" value="strong"> <span data-t="lvlStrong"></span></label>
+            </fieldset>
+            <fieldset>
+              <legend data-t="mode">Method</legend>
+              <label class="rad"><input type="radio" name="mode" value="images"> <span data-t="modeImages"></span></label>
+              <label class="rad"><input type="radio" name="mode" value="flatten"> <span data-t="modeFlatten"></span></label>
+              <p class="hint" data-t="modeFlattenHint"></p>
+            </fieldset>
+            <label class="chk"><input type="checkbox" id="strip"> <span data-t="strip"></span></label>
+            <button type="button" class="btn btn--amber wide" id="compressBtn" data-t="compressBtn">Compress</button>
+            <div class="result" id="compressResult" hidden aria-live="polite"></div>
+            <p class="hint honest" data-t="honest"></p>
+          </div>
+
+          <div class="progress" id="progress" hidden>
+            <p id="progressText"></p>
+            <div class="bar"><span id="progressBar"></span></div>
+          </div>
+          <p class="nudge" id="nudge" hidden><span data-t="emailNudge"></span> <a id="lnkNotify" href="/?topic=pdf-toolkit#contact" data-t="emailLink">Get updates</a></p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<section class="wrap how" aria-labelledby="howTitle">
+  <h2 id="howTitle" class="h2" data-t="howTitle">$ cat how-it-works.md</h2>
+  <ul id="howList"></ul>
+  <h3 class="h3" data-t="libsTitle">Libraries</h3>
+  <ul id="libs"></ul>
+  <p class="hint" id="asOf"></p>
+</section>
+
+<footer class="wrap foot">
+  <p><span data-t="foot">MIT</span> · <a id="lnkHome2" href="/tools/pdf-toolkit/">hmsk.life</a></p>
+</footer>
+
+<div class="ghost" id="ghost" hidden aria-hidden="true"></div>
+<script type="module" src="app.js?v=1"></script>
+</body>
+</html>

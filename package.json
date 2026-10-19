@@ -1,0 +1,12 @@
+{
+  "name": "hmsk-pdf-toolkit",
+  "version": "1.0.0",
+  "description": "Merge, split, reorder, rotate and compress PDFs in the browser. Files never leave the device.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/",
+    "start": "python3 -m http.server 8080 --directory public"
+  }
+}
