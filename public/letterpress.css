@@ -24,7 +24,7 @@
 :root {
   /* A1 palette. Text pairs ≥ 6:1 on paper, borders (rule-strong) ≥ 3:1 on paper and card. */
   --paper: #EFF1F2; --paper-2: #E2E6E9; --card: #F8F9FA;
-  --ink: #151B24; --ink-2: #4A5562;
+  --ink: #151B24; --ink-2: #4A5562; --placeholder: #616C78; /* 5.1:1 on card, 4.7:1 on paper: lighter than typed text */
   --rule: #CBD2D9; --rule-strong: #7B8592;
   --accent: #1E4C8A; --accent-hover: #163A6B; --on-accent: #FFFFFF; --accent-tint: #DCE6F3;
   --mark: #A8C8F2; --band: #151B24;
@@ -70,7 +70,7 @@ hr { border: 0; border-top: 1px solid var(--rule); }
 /* form controls: card fields, rule-strong borders (3.5:1), accent focus ring */
 input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=file]), select, textarea {
   font-family: var(--sans); color: var(--ink); background-color: var(--card); border: 1px solid var(--rule-strong); border-radius: var(--r-sm); }
-input::placeholder, textarea::placeholder { color: var(--ink-2); opacity: 1; }
+input::placeholder, textarea::placeholder { color: var(--placeholder); opacity: 1; }
 input:not([type=checkbox]):not([type=radio]):not([type=range]):focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); box-shadow: none; }
 input:disabled, select:disabled, textarea:disabled { background-color: var(--paper-2); color: var(--ink-2); border-color: var(--rule-strong); }
