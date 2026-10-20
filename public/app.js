@@ -87,7 +87,7 @@ function applyTexts() {
   $('#lnkHome').href = $('#lnkHome2').href = LINK_BASE + (de ? '/de/tools/pdf-toolkit/' : '/tools/pdf-toolkit/');
   $('#lnkImprint').href = LINK_BASE + (de ? '/impressum/' : '/imprint/');
   $('#lnkPrivacy').href = LINK_BASE + (de ? '/datenschutz/' : '/privacy/');
-  $('#lnkNotify').href = LINK_BASE + (de ? '/de/?topic=pdf-toolkit#contact' : '/?topic=pdf-toolkit#contact');
+  $('#lnkNotify').href = LINK_BASE + (de ? '/de/newsletter/?topic=pdf-toolkit' : '/subscribe/?topic=pdf-toolkit');
   $('#howList').innerHTML = t.how.map(s => `<li>${esc(s)}</li>`).join('');
   $('#libs').innerHTML = LIBS.map(l => `<li><a href="${l.url}" target="_blank" rel="noopener">${esc(l.name)}</a> ${l.version} (${l.license})</li>`).join('');
   $('#asOf').textContent = t.asOf(CHECKED);
