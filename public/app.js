@@ -18,7 +18,8 @@ const PDFJS_OPTS = {
 };
 
 const STORE = 'pdf-toolkit';
-const COLORS = ['#00FF9C', '#6FBF92', '#A9DDBF', '#2C8A5C', '#D5F0DF', '#4C6355'];
+// file markers: distinct hues, each ≥ 6:1 on the card background
+const COLORS = ['#1E4C8A', '#A3262A', '#2B6440', '#7A4E00', '#6B3F8F', '#4A5562'];
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -223,7 +224,7 @@ function blank() {
   c.width = 150; c.height = 200;
   const g = c.getContext('2d');
   g.fillStyle = '#fff'; g.fillRect(0, 0, 150, 200);
-  g.fillStyle = '#8FA898'; g.font = '14px monospace'; g.textAlign = 'center'; g.fillText('PDF', 75, 105);
+  g.fillStyle = '#4A5562'; g.font = '14px sans-serif'; g.textAlign = 'center'; g.fillText('PDF', 75, 105);
   return c;
 }
 // Draws the cached thumbnail into the card's canvas with the extra rotation applied.

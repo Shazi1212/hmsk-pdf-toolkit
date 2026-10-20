@@ -51,7 +51,7 @@ Tests cover the page-range parser and its errors, split plans, rotation maths, p
 | `public/config.js` | compression levels, library versions, link base |
 | `public/vendor/` | pdf-lib 1.17.1 (MIT) and PDF.js 4.10.38 legacy build (Apache-2.0), with cmaps and standard fonts |
 
-To self-host, set `LINK_BASE` in `public/config.js` if the top-strip links should point somewhere other than hmsk.life. Fonts (Martian Mono, Geist; SIL Open Font License) are in `public/assets/fonts/`.
+To self-host, set `LINK_BASE` in `public/config.js` if the top-strip links should point somewhere other than hmsk.life. Fonts (Newsreader, Public Sans; SIL Open Font License) are in `public/fonts/`; the shared hmsk.life look is in `public/letterpress.css`.
 
 ## Updating the libraries
 

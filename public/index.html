@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Private PDF toolkit: merge, split, rotate, compress in your browser</title>
 <meta name="description" content="Merge, split, reorder, rotate and compress PDFs in your browser. Your files never leave your device: no upload, no signup. Free and open source.">
-<meta name="theme-color" content="#0B0F0C">
+<meta name="theme-color" content="#EFF1F2">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
-<link rel="preload" href="/assets/fonts/MartianMono.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="app.css?v=1">
+<link rel="preload" href="fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="letterpress.css?v=2">
+<link rel="stylesheet" href="app.css?v=2">
 </head>
 <body>
 
@@ -23,7 +24,7 @@
 </nav>
 
 <header class="head wrap">
-  <p class="cmd"><span class="ps">$</span> pdf-toolkit --offline --no-upload</p>
+  <p class="eyebrow">PDF Toolkit</p>
   <h1 data-t="h1">Merge, split and compress PDFs without uploading them</h1>
   <p class="sub" data-t="sub"></p>
 </header>
@@ -62,8 +63,7 @@
     <aside class="panel" aria-label="Output">
       <div class="term">
         <div class="term__bar" role="tablist" id="tabs">
-          <i></i><i></i><i></i>
-          <button type="button" role="tab" id="tab-merge" aria-controls="p-merge" data-tab="merge"><span class="ps">$</span> <span data-t="tabMerge">merge</span></button>
+                    <button type="button" role="tab" id="tab-merge" aria-controls="p-merge" data-tab="merge"><span data-t="tabMerge">merge</span></button>
           <button type="button" role="tab" id="tab-split" aria-controls="p-split" data-tab="split"><span data-t="tabSplit">split</span></button>
           <button type="button" role="tab" id="tab-compress" aria-controls="p-compress" data-tab="compress"><span data-t="tabCompress">compress</span></button>
         </div>
@@ -139,6 +139,6 @@
 </footer>
 
 <div class="ghost" id="ghost" hidden aria-hidden="true"></div>
-<script type="module" src="app.js?v=1"></script>
+<script type="module" src="app.js?v=2"></script>
 </body>
 </html>

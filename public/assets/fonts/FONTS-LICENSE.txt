@@ -1,5 +1,0 @@
-Martian Mono, Copyright 2021 The Martian Mono Project Authors (https://github.com/evilmartians/mono)
-Geist, Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font)
-
-Both fonts are licensed under the SIL Open Font License, Version 1.1.
-Full license text: https://openfontlicense.org/open-font-license-official-text/
